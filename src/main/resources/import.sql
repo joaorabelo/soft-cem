@@ -1,0 +1,1 @@
+insert into alunos (mat_alu, nom_alu, dt_nasc_alu, sexo_alu, loc_nasc_alu, fili_alu, prof_fili_alu, fili_alu2, prof_fili_alu2, status_alu, path_foto_alu, cpf_alu, rg_alu, fone_resp, fone_resp2, obs_alu, id_resp, id_end) values (1, 'Pedro', 10/10/1999, 'M', 'sd', 'joao', 'maria', 'pedreito, 'maria', 's', 'nuall', 2312312312, 123123123, 12123123, 12312313, 'ssssss', 1,1 );

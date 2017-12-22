@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Lista de Alunos</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>	
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="panel panel-default" style="margin: 60px">
+
+		<div class="panel-heading">
+			<h1 class="panel-title">Edita Aluno</h1>
+		</div>
+
+		<form class="form-inline" method="POST" th:object="${aluno}" th:action="@{/alteraluno}" style="margin: 20px 0">
+			<div class="form-group" >
+			    <input type="text" class="form-control" value="{aluno.matAlu}" th:field="*{matAlu}" placeholder="id" readonly="readonly"/>
+			    <input type="text" class="form-control" value="{aluno.nomAlu}" th:field="*{nomAlu}" placeholder="Nome" readonly="readonly" />
+			    <input type="date" class="form-control" value="{aluno.dtNascAlu}" th:field="*{dtNascAlu}" placeholder="Data de Nascimento" readonly="readonly" /> 
+			    <input type="text" class="form-control" value="{aluno.sexoAlu}" th:field="*{sexoAlu}" placeholder="Sexo" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.locNascAlu}" th:field="*{locNascAlu}" placeholder="Local de Nasciemento" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.filiAlu}" th:field="*{filiAlu}" placeholder="Filiação 1" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.filiAlu2}" th:field="*{filiAlu2}" placeholder="Filiação 2" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.profFiliAlu}" th:field="*{profFiliAlu}" placeholder="Profissão da Filiação 1" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.profFiliAlu2}" th:field="*{profFiliAlu2}" placeholder="Profissão da Filiação 2" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.statusAlu}" th:field="*{statusAlu}" placeholder="Status" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.pathFotoAlu}" th:field="*{pathFotoAlu}" placeholder="Foto" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.cpfAlu}" th:field="*{cpfAlu}" placeholder="CPF" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.rgAlu}" th:field="*{rgAlu}" placeholder="RG" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.foneResp}" th:field="*{foneResp}" placeholder="fone Resp" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.foneResp2}" th:field="*{foneResp2}" placeholder="fone Resp 2" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.obsAlu}" th:field="*{obsAlu}" placeholder="Informe o texto" readonly="readonly" />
+			    <input type="text" class="form-control" value="{aluno.idEnd}" th:field="*{idEnd}" placeholder="id end" readonly="readonly" />
+			     <input type="text" class="form-control" value="{aluno.idResp}" th:field="*{idResp}" placeholder="id resp" readonly="readonly" />
+			    
+	
+				<button type="submit" class="btn btn-primary">Alterar</button>
+			</div>
+		</form>
+
+        
+	</div>
+	
+</body>
+</html>

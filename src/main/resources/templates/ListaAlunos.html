@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Lista de Alunos</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>	
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+   			<h1 class="panel-title">Lista de alunos</h1>
+	   	</div>
+	   		<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title an-titulo-panel">Cadastro Aluno</h1>
+			</div>
+			</div>
+			</div>
+	   	<div class="panel-body">
+			<form class="form-horizontal" method="POST" th:action="@{/alunos}"
+				th:object="${aluno}">
+				<input type="hidden" th:field="*{matAlu}"/>
+				<div class="form-group">
+				<label for="nome" class="col-sm-2  control-label">Nome</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="nome"
+						th:field="*{nomAlu}" placeholder="Nome" /> 
+						</div>
+						</div>
+						<div class="form-group">
+				<label for="dataNascimento" class="col-sm-2  control-label">Data
+					Nascimento</label>
+				<div class="col-sm-2">
+					<input type="date" class="form-control" id="dtNascAlu"
+						th:field="*{dtNascAlu}" placeholder="Data de Nascimento" />
+						</div>
+						</div>
+					<div class="form-group">
+					<label for="sexo" class="col-sm-2 control-label">Sexo</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="sexoAlu"
+						th:field="*{sexoAlu}" placeholder="Sexo" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="localnascimetno" class="col-sm-2 control-label">Local de Nascimento</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="locNascAlu"
+						th:field="*{locNascAlu}" placeholder="Local de Nasciemento" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="fili1" class="col-sm-2 control-label">Filiação 1</label>
+					<div class="col-sm-4">
+					<input type="text" class="form-control" id="filiAlu"
+						th:field="*{filiAlu}" placeholder="Filiação 1" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="fili2" class="col-sm-2 control-label">Filiação 2</label>
+					<div class="col-sm-4">
+					<input type="text" class="form-control" id="filiAlu2"
+						th:field="*{filiAlu2}" placeholder="Filiação 2" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="proffil1" class="col-sm-2 control-label">Profissão da Filiação 1</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="profFiliAlu"
+						th:field="*{profFiliAlu}" placeholder="Profissão da Filiação 1" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="proffil2" class="col-sm-2 control-label">Profissão da Filiação 2</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="profFiliAlu2"
+						th:field="*{profFiliAlu2}" placeholder="Profissão da Filiação 2" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="status" class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="statusAlu"
+						th:field="*{statusAlu}" placeholder="Status" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="Foto" class="col-sm-2 control-label">Foto</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="pathFotoAlu"
+						th:field="*{pathFotoAlu}" placeholder="Foto" />
+					</div>
+					</div>
+	
+					<div class="form-group">
+				<label for="cpf" class="col-sm-2  control-label">CPF</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="cpfAlu"
+						th:field="*{cpfAlu}" placeholder="CPF" />
+				</div>
+			</div>
+						<div class="form-group">
+				<label for="rg" class="col-sm-2  control-label">RG</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="rgAlu"
+						th:field="*{rgAlu}" placeholder="RG" />
+				</div>
+			</div>				
+			
+			        <div class="form-group">
+					<label for="foneresp" class="col-sm-2 control-label">Telefone 1</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="foneResp"
+						th:field="*{foneResp}" placeholder="fone Resp" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="foneresp1" class="col-sm-2 control-label">Telefone 1</label>
+					<div class="col-sm-2">
+					<input type="text" class="form-control" id="foneResp2"
+						th:field="*{foneResp2}" placeholder="fone Resp 2" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label for="obs" class="col-sm-2 control-label">Observação</label>
+					<div class="col-sm-2">
+					<textarea class="form-control input-sm" th:field="*{obsAlu}" cols="5" rows="5" placeholder="Informe o texto"></textarea>
+					</div>
+					</div>
+						<hr>
+						<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h3 class="panel-title an-titulo-panel">Endereco</h3>
+			</div>
+			</div>
+						
+					<div class="panel-body" th:object="${end}">
+				<label for="uf" class="col-sm-2  control-label">UF</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="ufEnd"
+						th:field="*{ufEnd}" placeholder="UF" />
+						</div>
+						
+						
+			<label for="cidade" class="col-sm-2  control-label">Cidade</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="cidEnd"
+						th:field="*{cidEnd}" placeholder="CIDADE" />
+						</div>
+						
+						
+						<label for="local" class="col-sm-2  control-label">Local</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="localEnd"
+						th:field="*{localEnd}" placeholder="local" />
+						</div>
+						
+						
+						<label for="bairro" class="col-sm-2  control-label">Bairro</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="baiEnd"
+						th:field="*{baiEnd}" placeholder="Bairro" />
+						</div>
+						
+						
+						<label for="numero" class="col-sm-2  control-label">Numero</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="numEnd"
+						th:field="*{numEnd}" placeholder="Numero" />
+						</div>
+						
+						<label for="cep" class="col-sm-2  control-label">CEP</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="numEnd"
+						th:field="*{cep}" placeholder="CEP" />
+						</div>
+						
+</div>
+					
+				</div>
+				<hr>
+						<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h3 class="panel-title an-titulo-panel">Responsável</h3>
+			</div>
+			</div>
+						
+					<div class="panel-body" th:object="${resp}">
+				<label for="nomeresp" class="col-sm-2  control-label">Nome</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="nomResp"
+						th:field="*{nomResp}" placeholder="Nome do Responsavel" />
+						</div>
+						
+						<label for="dtNascResp" class="col-sm-2  control-label">Data de Nascimento</label>
+				<div class="col-sm-4">
+					<input type="date" class="form-control" id="dtNascResp"
+						th:field="*{dtNascResp}" placeholder="Date de Nascimento" />
+						</div>
+						
+						<label for="cpfResp" class="col-sm-2  control-label">CPF</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="cpfResp"
+						th:field="*{cpfResp}" placeholder="CPF" />
+				</div>
+				
+				<label for="rgResp" class="col-sm-2  control-label">RG</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="rgResp"
+						th:field="*{rgResp}" placeholder="RG" />
+				</div>
+				
+				<label for="sexoResp" class="col-sm-2 control-label">Sexo</label>
+					<div class="col-sm-4">
+					<input type="text" class="form-control" id="sexoResp"
+						th:field="*{sexoResp}" placeholder="Sexo" />
+					</div>
+					
+					<label for="foneresps" class="col-sm-2 control-label">Telefone </label>
+					<div class="col-sm-4">
+					<input type="text" class="form-control" id="foneResps"
+						th:field="*{foneResp}" placeholder="fone Resps" />
+					</div>
+						
+						
+						</div>
+						
+						</div>
+						<hr>
+						<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h3 class="panel-title an-titulo-panel">Endereco do Responsável</h3>
+			</div>
+			</div>
+						
+					<div class="panel-body" th:object="${endresp}">
+				<label for="ufr" class="col-sm-2  control-label">UF</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="ufEndr"
+						th:field="*{ufEnd}" placeholder="UF" />
+						</div>
+						
+						
+			<label for="cidader" class="col-sm-2  control-label">Cidade</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="cidEndr"
+						th:field="*{cidEnd}" placeholder="CIDADE" />
+						</div>
+						
+						
+						<label for="localr" class="col-sm-2  control-label">Local</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="localEndr"
+						th:field="*{localEnd}" placeholder="local" />
+						</div>
+						
+						
+						<label for="bairror" class="col-sm-2  control-label">Bairro</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="baiEndr"
+						th:field="*{baiEnd}" placeholder="Bairro" />
+						</div>
+						
+						
+						<label for="numeror" class="col-sm-2  control-label">Numero</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="numEndr"
+						th:field="*{numEnd}" placeholder="Numero" />
+						</div>
+						
+						<label for="cepr" class="col-sm-2  control-label">CEP</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="numEndr"
+						th:field="*{cep}" placeholder="CEP" />
+						</div>
+						
+</div>
+					
+				</div>
+				<button type="submit" class="btn btn-primary">Adicionar</button>
+					 <a th:href="@{/}" class="btn btn-sm btn-default">Cancelar</a>
+			</form>
+	   	<table class="table">
+	   	<thead>
+	   	<tr>
+	   	<th>Nome</th>
+	   	<th>ID</th>
+	   	</tr>
+	   	</thead>
+	   	<tbody>
+	   	<tr th:each="aluno : ${alunos}">
+						<td th:text="${aluno.nomAlu}"></td>
+						<td th:text="${aluno.matAlu}"></td>
+						<td th:text="${aluno.idEnd}"></td>
+						<td th:text="${aluno.idResp}"></td>
+						<td><a th:href="${'/excluialuno/' + aluno.matAlu}" >Excluir</a></td>
+                        <td><a th:href="${'/editaluno/' + aluno}">Editar</a></td>
+					</tr>
+	   	</tbody>
+	   	</table>
+	    </div>
+	     </div>
+	   	
+</body>
+</html>
