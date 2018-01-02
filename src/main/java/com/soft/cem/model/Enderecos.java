@@ -72,13 +72,12 @@ public class Enderecos implements Serializable {
     @Column(name = "comp_end")
     private String compEnd;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "num_end")
-    private int numEnd;
+    private Integer numEnd;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cep")
-    private int cep;
+    private Integer cep;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEnd")
     private Collection<Alunos> alunosCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEnd")
@@ -93,7 +92,7 @@ public class Enderecos implements Serializable {
         this.idEnd = idEnd;
     }
 
-    public Enderecos(Integer idEnd, String ufEnd, String cidEnd, String localEnd, String baiEnd, int numEnd, int cep) {
+    public Enderecos(Integer idEnd, String ufEnd, String cidEnd, String localEnd, String baiEnd, Integer numEnd, Integer cep) {
         this.idEnd = idEnd;
         this.ufEnd = ufEnd;
         this.cidEnd = cidEnd;
@@ -151,19 +150,19 @@ public class Enderecos implements Serializable {
         this.compEnd = compEnd;
     }
 
-    public int getNumEnd() {
+    public Integer getNumEnd() {
         return numEnd;
     }
 
-    public void setNumEnd(int numEnd) {
+    public void setNumEnd(Integer numEnd) {
         this.numEnd = numEnd;
     }
 
-    public int getCep() {
+    public Integer getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(Integer cep) {
         this.cep = cep;
     }
 

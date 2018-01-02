@@ -115,8 +115,9 @@ public class Alunos implements Serializable {
     private String pathFotoAlu;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 11)
     @Column(name = "cpf_alu")
-    private int cpfAlu;
+    private String cpfAlu;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -125,7 +126,7 @@ public class Alunos implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "fone_resp")
-    private int foneResp;
+    private Integer foneResp;
     @Column(name = "fone_resp2")
     private Integer foneResp2;
     @Lob
@@ -155,7 +156,7 @@ public class Alunos implements Serializable {
         this.matAlu = matAlu;
     }
 
-    public Alunos(Integer matAlu, String nomAlu, Date dtNascAlu, Character sexoAlu, String locNascAlu, String filiAlu, String profFiliAlu, String filiAlu2, String profFiliAlu2, String statusAlu, int cpfAlu, String rgAlu, int foneResp) {
+    public Alunos(Integer matAlu, String nomAlu, Date dtNascAlu, Character sexoAlu, String locNascAlu, String filiAlu, String profFiliAlu, String filiAlu2, String profFiliAlu2, String statusAlu, String cpfAlu, String rgAlu, Integer foneResp) {
         this.matAlu = matAlu;
         this.nomAlu = nomAlu;
         this.dtNascAlu = dtNascAlu;
@@ -259,11 +260,11 @@ public class Alunos implements Serializable {
         this.pathFotoAlu = pathFotoAlu;
     }
 
-    public int getCpfAlu() {
+    public String getCpfAlu() {
         return cpfAlu;
     }
 
-    public void setCpfAlu(int cpfAlu) {
+    public void setCpfAlu(String cpfAlu) {
         this.cpfAlu = cpfAlu;
     }
 
@@ -275,11 +276,11 @@ public class Alunos implements Serializable {
         this.rgAlu = rgAlu;
     }
 
-    public int getFoneResp() {
+    public Integer getFoneResp() {
         return foneResp;
     }
 
-    public void setFoneResp(int foneResp) {
+    public void setFoneResp(Integer foneResp) {
         this.foneResp = foneResp;
     }
 

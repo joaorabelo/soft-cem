@@ -69,7 +69,7 @@ public class Responsaveis implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "cpf_resp")
-    private int cpfResp;
+    private String cpfResp;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -82,7 +82,7 @@ public class Responsaveis implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "fone_resp")
-    private int foneResp;
+    private Integer foneResp;
     @Column(name = "fone_resp2")
     private Integer foneResp2;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResp")
@@ -99,7 +99,7 @@ public class Responsaveis implements Serializable {
         this.idResp = idResp;
     }
 
-    public Responsaveis(Integer idResp, String nomResp, Date dtNascResp, int cpfResp, String rgResp, Character sexoResp, int foneResp) {
+    public Responsaveis(Integer idResp, String nomResp, Date dtNascResp, String cpfResp, String rgResp, Character sexoResp, Integer foneResp) {
         this.idResp = idResp;
         this.nomResp = nomResp;
         this.dtNascResp = dtNascResp;
@@ -133,11 +133,11 @@ public class Responsaveis implements Serializable {
         this.dtNascResp = dtNascResp;
     }
 
-    public int getCpfResp() {
+    public String getCpfResp() {
         return cpfResp;
     }
 
-    public void setCpfResp(int cpfResp) {
+    public void setCpfResp(String cpfResp) {
         this.cpfResp = cpfResp;
     }
 
@@ -157,11 +157,11 @@ public class Responsaveis implements Serializable {
         this.sexoResp = sexoResp;
     }
 
-    public int getFoneResp() {
+    public Integer getFoneResp() {
         return foneResp;
     }
 
-    public void setFoneResp(int foneResp) {
+    public void setFoneResp(Integer foneResp) {
         this.foneResp = foneResp;
     }
 
