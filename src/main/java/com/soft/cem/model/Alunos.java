@@ -367,7 +367,11 @@ public class Alunos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.rabelo.cemsoft.Alunos[ matAlu=" + matAlu + " ]";
+        return " + matAlu + ";
+    }
+    
+    public int getColumnCount() {
+        return getClass().getDeclaredFields().length;
     }
     
 }
