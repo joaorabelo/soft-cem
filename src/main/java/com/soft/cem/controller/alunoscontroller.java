@@ -1,5 +1,7 @@
 package com.soft.cem.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,17 +20,19 @@ import com.soft.cem.repository.AlunosJPA;
 
 
 @Controller
-@RequestMapping("/alunos")
+
 public class alunoscontroller {
+
+private AlunosJPA aluno;
+private ArrayList<Alunos> users;	
 	
 @Autowired
-private AlunosJPA aluno;
+public void setAlunosJPA (AlunosJPA aluno) {
+	this.aluno = aluno;
+}
 
 
-
-
-
-@GetMapping
+@RequestMapping(value = "/alunos", method = RequestMethod.GET)
 public ModelAndView listar() {
 	// deveria ter um metodo para criar esses objetos, mas fiz no listar mesmo
 	ModelAndView modelAndView = new ModelAndView("ListaAlunos");
@@ -41,7 +45,8 @@ public ModelAndView listar() {
 }
 
 
-@PostMapping
+
+@RequestMapping(value = "/alunos", method = RequestMethod.POST)
 public String salvar(Alunos aluno, Enderecos end, Responsaveis resp, Enderecos endresp ) {
 	aluno.setIdEnd(end);
 	aluno.setIdResp(resp);
@@ -79,9 +84,24 @@ public String excluir(@PathVariable Integer matAlu) {
 	return "redirect:/alunos";
 }
 
-
-
-
+@RequestMapping(value = "/alunos/fichaid/{matAlu}")
+public ArrayList<Alunos> fichaid(@PathVariable Integer id, Model model) {
+	users  = null;
+	Alunos a = new Alunos();
+	a = aluno.getOne(id);
+	users.add(a);
+    model.addAttribute("users", users );
+    return users ;
+}
+/**
+@RequestMapping(value = "/download", method = RequestMethod.GET)
+public ArrayList<Alunos> download(Model model) {
+	ArrayList<Alunos> users = null;
+	users = (ArrayList<Alunos>) aluno.findAll();
+    model.addAttribute("users", users);
+    return users;
+}
+*/
 	
 
 }

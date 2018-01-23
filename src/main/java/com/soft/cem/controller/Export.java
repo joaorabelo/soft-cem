@@ -14,7 +14,7 @@ import com.soft.cem.model.Alunos;
 import com.soft.cem.repository.AlunosJPA;
 
 
-@Controller
+
 public class Export {
 
     @Autowired
@@ -23,7 +23,7 @@ public class Export {
     /**
      * Handle request to download an Excel document
      */
-    
+    /**
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public ArrayList<Alunos> download(Model model) {
     	ArrayList<Alunos> users = null;
@@ -32,5 +32,5 @@ public class Export {
         return users;
     }
 
-
+*/
 }

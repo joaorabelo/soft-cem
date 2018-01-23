@@ -13,9 +13,12 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import com.soft.cem.model.Alunos;
+import com.soft.cem.repository.AlunosJPA;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.awt.Color;
 import java.time.LocalDate;
@@ -27,26 +30,19 @@ import java.util.Map;
  * Created by aboullaite on 2017-02-25.
  */
 public class PdfView extends AbstractPdfView {
-   
-	
-	
+  
 	
 	
 	@Override
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer, HttpServletRequest request, HttpServletResponse response) throws Exception {
         // change the file name
-        response.setHeader("Content-Disposition", "attachment; filename=\"my-pdf-file.pdf\"");
-
-        
-        
-        
-	
+        response.setHeader("Content-Disposition", "attachment; filename=\"ficha-de-matricula.pdf\"");
 		
-		@SuppressWarnings("unchecked")
-		ArrayList<Alunos> users = (ArrayList<Alunos>) model.get("users");
-        document.add(new Paragraph("Generated Users " + LocalDate.now()));
+		ArrayList<Alunos> users = new ArrayList<>();
+		users = (ArrayList<Alunos>) model.get("users");
+        document.add(new Paragraph("Ficha de Matricula " + LocalDate.now()));
 
-        PdfPTable table = new PdfPTable(users.stream().findAny().get().getColumnCount());
+        PdfPTable table = new PdfPTable(1);
         table.setWidthPercentage(100.0f);
         table.setSpacingBefore(10);
 

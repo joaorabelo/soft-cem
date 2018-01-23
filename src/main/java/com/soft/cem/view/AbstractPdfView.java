@@ -44,12 +44,13 @@ public abstract class AbstractPdfView extends AbstractView {
         buildPdfMetadata(model, document, request);
 
         // Build PDF document.
-        writer.setInitialLeading(16);
+       
         document.open();
         buildPdfDocument(model, document, writer, request, response);
         document.close();
 
         // Flush to HTTP response.
+        response.setHeader("Content-Disposition", "attachment"); 
         writeToResponse(response, baos);
     }
 
