@@ -1,3 +1,4 @@
+
 package com.soft.cem.view;
 
 import com.lowagie.text.Document;
@@ -11,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-/**
- * Created by aboullaite on 2017-02-25.
- */
+
 
 public abstract class AbstractPdfView extends AbstractView {
 
@@ -111,4 +110,3 @@ public abstract class AbstractPdfView extends AbstractView {
     protected abstract void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
                                              HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
-

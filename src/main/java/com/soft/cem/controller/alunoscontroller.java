@@ -1,8 +1,15 @@
 package com.soft.cem.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -17,6 +24,7 @@ import com.soft.cem.model.Alunos;
 import com.soft.cem.model.Enderecos;
 import com.soft.cem.model.Responsaveis;
 import com.soft.cem.repository.AlunosJPA;
+import com.soft.cem.util.GeneratePdfReport;
 
 
 @Controller
@@ -94,6 +102,7 @@ public ArrayList<Alunos> fichaid(@PathVariable Integer id, Model model) {
     return users ;
 }
 /**
+
 @RequestMapping(value = "/download", method = RequestMethod.GET)
 public ArrayList<Alunos> download(Model model) {
 	ArrayList<Alunos> users = null;
@@ -102,6 +111,26 @@ public ArrayList<Alunos> download(Model model) {
     return users;
 }
 */
+ @RequestMapping(value = "/pdfreport", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> alunosReport() throws IOException {
+
+        
+        List<Alunos> listaluno = (List<Alunos>) aluno.findAll(); 
+        ByteArrayInputStream bis = GeneratePdfReport.alunosReport(listaluno);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=alunosreport.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
+
+
+
 	
 
 }
