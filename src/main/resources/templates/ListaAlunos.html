@@ -316,6 +316,7 @@
 						<td th:text="${aluno.idResp}"></td>
 						<td><a th:href="${'/excluialuno/' + aluno.matAlu}" >Excluir</a></td>
                         <td><a th:href="${'/editaluno/' + aluno}">Editar</a></td>
+                        <td><a th:href="${'/download/' + aluno.matAlu}">Gerar PDF</a></td>
 					</tr>
 	   	</tbody>
 	   	</table>

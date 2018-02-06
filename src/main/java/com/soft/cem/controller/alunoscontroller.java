@@ -101,16 +101,23 @@ public ArrayList<Alunos> fichaid(@PathVariable Integer id, Model model) {
     model.addAttribute("users", users );
     return users ;
 }
-/**
 
-@RequestMapping(value = "/download", method = RequestMethod.GET)
-public ArrayList<Alunos> download(Model model) {
-	ArrayList<Alunos> users = null;
-	users = (ArrayList<Alunos>) aluno.findAll();
-    model.addAttribute("users", users);
-    return users;
+
+@RequestMapping(value = "/download/{matAlu}", method = RequestMethod.GET)
+public ResponseEntity<InputStreamResource> fichamatricula(@PathVariable("matAlu") Integer id) {
+	 Alunos alu= aluno.getOne(id);
+	 ByteArrayInputStream bis = GeneratePdfReport.fichamatricula(alu);
+	 
+	 HttpHeaders headers = new HttpHeaders();
+     headers.add("Content-Disposition", "inline; filename=fichamatricula.pdf");
+
+     return ResponseEntity
+             .ok()
+             .headers(headers)
+             .contentType(MediaType.APPLICATION_PDF)
+             .body(new InputStreamResource(bis));
 }
-*/
+
  @RequestMapping(value = "/pdfreport", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> alunosReport() throws IOException {

@@ -5,7 +5,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class PrincipalController {
 	
-	@RequestMapping("/principal")
+	@RequestMapping("/")
 
 	public ModelAndView mostrar() {
 
