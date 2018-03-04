@@ -134,14 +134,18 @@ public class GeneratePdfReport {
 	            LineSeparator ls = new LineSeparator();
 	            
 	            document.add(ls);
-	            Chunk titulo = new Chunk ("FICHA DE MATRÍCULA");
 	            
-                document.add(titulo);
+	            Paragraph ficha = new Paragraph(new Chunk ("FICHA DE MATRÍCULA"));
+                ficha.setAlignment(Element.ALIGN_CENTER);
+                ficha.setSpacingAfter(2);
+                ficha.setSpacingBefore(2);
+	            document.add(ficha);
 	            
 	            PdfPTable table = new PdfPTable(1);
 	            table.getDefaultCell().setBorder(0);
 	            table.setWidthPercentage(100);
 	            table.setSpacingBefore(8);
+	            table.getDefaultCell().setFixedHeight(10);
 	            
 	            PdfPCell hcell;
 	            hcell = new PdfPCell(new Phrase("Id: "+ alu.getMatAlu().toString(),SUBFONT));
