@@ -1,11 +1,20 @@
 package com.soft.cem.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,20 +23,24 @@ import com.soft.cem.model.Alunos;
 import com.soft.cem.model.Enderecos;
 import com.soft.cem.model.Responsaveis;
 import com.soft.cem.repository.AlunosJPA;
+import com.soft.cem.util.GeneratePdfReport;
 
 
 @Controller
-@RequestMapping("/alunos")
+
 public class alunoscontroller {
-	
-@Autowired
+
 private AlunosJPA aluno;
 
+private ArrayList<Alunos> users;	
+	
+@Autowired
+public void setAlunosJPA (AlunosJPA aluno) {
+	this.aluno = aluno;
+}
 
 
-
-
-@GetMapping
+@RequestMapping(value = "/alunos", method = RequestMethod.GET)
 public ModelAndView listar() {
 	// deveria ter um metodo para criar esses objetos, mas fiz no listar mesmo
 	ModelAndView modelAndView = new ModelAndView("ListaAlunos");
@@ -35,17 +48,17 @@ public ModelAndView listar() {
 	modelAndView.addObject("aluno", new Alunos());
 	modelAndView.addObject("end", new Enderecos());
 	modelAndView.addObject("resp", new Responsaveis());
-	modelAndView.addObject("endresp", new Enderecos());
 	return modelAndView;
 }
 
 
-@PostMapping
-public String salvar(Alunos aluno, Enderecos end, Responsaveis resp, Enderecos endresp ) {
+
+@RequestMapping(value = "/alunos", method = RequestMethod.POST)
+public String salvar(Alunos aluno, Enderecos end, Responsaveis resp ) {;
 	aluno.setIdEnd(end);
 	aluno.setIdResp(resp);
-	aluno.getIdResp().setIdEnd(endresp);
 	this.aluno.save(aluno);
+	
 	
 	return "redirect:/alunos";
 }
@@ -63,11 +76,7 @@ public ModelAndView editar(@PathVariable Alunos aluno) {
 @RequestMapping("/alteraluno")
 public String editaralterar(@Validated Alunos aluno) {
 	
-	Alunos alunonovo = aluno;
-
-	this.aluno.delete(aluno.getMatAlu());
-
-	this.aluno.save(alunonovo);
+	this.aluno.save(aluno);
 
 	return "redirect:/alunos";
 }
@@ -77,6 +86,50 @@ public String excluir(@PathVariable Integer matAlu) {
 	this.aluno.delete(matAlu);
 	return "redirect:/alunos";
 }
+
+@RequestMapping(value = "/alunos/fichaid/{matAlu}")
+public ArrayList<Alunos> fichaid(@PathVariable Integer id, Model model) {
+	users  = null;
+	Alunos a = new Alunos();
+	a = aluno.getOne(id);
+	users.add(a);
+    model.addAttribute("users", users );
+    return users ;
+}
+
+
+@RequestMapping(value = "/download/{matAlu}", method = RequestMethod.GET)
+public ResponseEntity<InputStreamResource> fichamatricula(@PathVariable("matAlu") Integer id) throws MalformedURLException, IOException {
+	 Alunos alu = aluno.getOne(id);
+	 ByteArrayInputStream bis = GeneratePdfReport.fichamatricula(alu);
+	 
+	 HttpHeaders headers = new HttpHeaders();
+     headers.add("Content-Disposition", "inline; filename=fichamatricula.pdf");
+
+     return ResponseEntity
+             .ok()
+             .headers(headers)
+             .contentType(MediaType.APPLICATION_PDF)
+             .body(new InputStreamResource(bis));
+}
+
+ @RequestMapping(value = "/pdfreport", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> alunosReport() throws IOException {
+
+        
+        List<Alunos> listaluno = (List<Alunos>) aluno.findAll(); 
+        ByteArrayInputStream bis = GeneratePdfReport.alunosReport(listaluno);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=alunosreport.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
 
 
 

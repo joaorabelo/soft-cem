@@ -73,6 +73,9 @@ public class Boletins implements Serializable {
     @JoinColumn(name = "mat_prof", referencedColumnName = "mat_prof")
     @ManyToOne(optional = false)
     private Professores matProf;
+    @JoinColumn(name = "id_tur", referencedColumnName = "id_tur")
+    @ManyToOne(optional = false)
+    private Turmas idTur;
 
     public Boletins() {
     }
@@ -174,7 +177,15 @@ public class Boletins implements Serializable {
         this.matProf = matProf;
     }
 
-    @Override
+    public Turmas getIdTur() {
+		return idTur;
+	}
+
+	public void setIdTur(Turmas idTur) {
+		this.idTur = idTur;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (ano != null ? ano.hashCode() : 0);
