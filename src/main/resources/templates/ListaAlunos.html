@@ -192,10 +192,8 @@
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="numEnd"
 						th:field="*{cep}" placeholder="CEP" />
-						</div>
-						
-</div>
-					
+						</div>				
+                    </div>
 				</div>
 				<hr>
 						<div class="panel panel-default">
@@ -241,63 +239,8 @@
 					<input type="text" class="form-control" id="foneResps"
 						th:field="*{foneResp}" placeholder="fone Resps" />
 					</div>
-						
-						
 						</div>
-						
-						</div>
-						<hr>
-						<div class="panel panel-default">
-		<div class="panel-heading">
-			<div class="clearfix">
-				<h3 class="panel-title an-titulo-panel">Endereco do Responsável</h3>
-			</div>
-			</div>
-						
-					<div class="panel-body" th:object="${endresp}">
-				<label for="ufr" class="col-sm-2  control-label">UF</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="ufEndr"
-						th:field="*{ufEnd}" placeholder="UF" />
-						</div>
-						
-						
-			<label for="cidader" class="col-sm-2  control-label">Cidade</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="cidEndr"
-						th:field="*{cidEnd}" placeholder="Cidade" />
-						</div>
-						
-						
-						<label for="localr" class="col-sm-2  control-label">Local</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="localEndr"
-						th:field="*{localEnd}" placeholder="Local" />
-						</div>
-						
-						
-						<label for="bairror" class="col-sm-2  control-label">Bairro</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="baiEndr"
-						th:field="*{baiEnd}" placeholder="Bairro" />
-						</div>
-						
-						
-						<label for="numeror" class="col-sm-2  control-label">Numero</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="numEndr"
-						th:field="*{numEnd}" placeholder="Numero" />
-						</div>
-						
-						<label for="cepr" class="col-sm-2  control-label">CEP</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="numEndr"
-						th:field="*{cep}" placeholder="CEP" />
-						</div>
-						
-</div>
-					
-				</div>
+						</div>			
 				<button type="submit" class="btn btn-primary">Adicionar</button>
 					 <a th:href="@{/}" class="btn btn-sm btn-default">Cancelar</a>
 			</form>

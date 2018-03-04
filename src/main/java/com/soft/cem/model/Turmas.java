@@ -86,6 +86,8 @@ public class Turmas implements Serializable {
     private Collection<Professores> professoresCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTur")
     private Collection<Recuperacoes> recuperacoesCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTur")
+    private Collection<Boletins> boletinsCollection;
 
     public Turmas() {
     }
@@ -202,6 +204,15 @@ public class Turmas implements Serializable {
 
     public void setRecuperacoesCollection(Collection<Recuperacoes> recuperacoesCollection) {
         this.recuperacoesCollection = recuperacoesCollection;
+    }
+    
+    @XmlTransient
+    public Collection<Boletins> getBoletinsCollection() {
+        return boletinsCollection;
+    }
+
+    public void setBoletinsCollection(Collection<Boletins> boletinsCollection) {
+        this.boletinsCollection = boletinsCollection;
     }
 
     @Override

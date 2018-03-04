@@ -170,6 +170,8 @@ alter table Recuperacoes add constraint fk_rec_tur foreign key (id_tur) referenc
   
   -- ALTER TABLE responsaveis CHANGE column cpf_resp cpf_resp varchar(11) not null;
   -- ALTER TABLE professores CHANGE column cpf_prof cpf_prof varchar(11) not null;
-  
+  -- Alter table responsaveis modify column id_end int(3) null
+  -- Alter table boletins add id_tur int(5) not null;
+  -- alter table Boletins add constraint fk_bol_tur foreign key (id_tur) references Turmas (id_tur);
 
 select 'Tabelas criadas com sucesso, \nuse o comando "SHOW TABLES" para visualizar \nas 12 tabelas que foram criadas' AS '';

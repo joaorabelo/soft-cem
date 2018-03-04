@@ -215,7 +215,7 @@ public class Enderecos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.rabelo.cemsoft.Enderecos[ idEnd=" + idEnd + " ]";
+        return ""+idEnd+"";
     }
     
 }

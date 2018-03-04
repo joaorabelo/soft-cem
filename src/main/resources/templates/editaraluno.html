@@ -16,33 +16,121 @@
 <div class="panel panel-default" style="margin: 60px">
 
 		<div class="panel-heading">
-			<h1 class="panel-title">Edita Aluno</h1>
+			<h1 class="panel-title">Editar Aluno</h1>
 		</div>
 
-		<form class="form-inline" method="POST" th:object="${aluno}" th:action="@{/alteraluno}" style="margin: 20px 0">
-			<div class="form-group" >
+		<form class="form-horizontal" method="POST" th:object="${aluno}" th:action="@{/alteraluno}" style="margin: 20px 0">
+			<div class="form-group">
+				<label for="nome" class="col-sm-2  control-label">ID:</label>
+				<div class="col-sm-1">
 			    <input type="text" class="form-control" value="{aluno.matAlu}" th:field="*{matAlu}" placeholder="id" readonly="readonly"/>
-			    <input type="text" class="form-control" value="{aluno.nomAlu}" th:field="*{nomAlu}" placeholder="Nome" readonly="readonly" />
-			    <input type="date" class="form-control" value="{aluno.dtNascAlu}" th:field="*{dtNascAlu}" placeholder="Data de Nascimento" readonly="readonly" /> 
-			    <input type="text" class="form-control" value="{aluno.sexoAlu}" th:field="*{sexoAlu}" placeholder="Sexo" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.locNascAlu}" th:field="*{locNascAlu}" placeholder="Local de Nasciemento" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.filiAlu}" th:field="*{filiAlu}" placeholder="Filiação 1" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.filiAlu2}" th:field="*{filiAlu2}" placeholder="Filiação 2" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.profFiliAlu}" th:field="*{profFiliAlu}" placeholder="Profissão da Filiação 1" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.profFiliAlu2}" th:field="*{profFiliAlu2}" placeholder="Profissão da Filiação 2" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.statusAlu}" th:field="*{statusAlu}" placeholder="Status" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.pathFotoAlu}" th:field="*{pathFotoAlu}" placeholder="Foto" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.cpfAlu}" th:field="*{cpfAlu}" placeholder="CPF" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.rgAlu}" th:field="*{rgAlu}" placeholder="RG" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.foneResp}" th:field="*{foneResp}" placeholder="fone Resp" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.foneResp2}" th:field="*{foneResp2}" placeholder="fone Resp 2" readonly="readonly" />
-			    <input type="text" class="form-control" value="{aluno.obsAlu}" th:field="*{obsAlu}" placeholder="Informe o texto" readonly="readonly" />
+			    </div>
+			    </div>
+			    <div class="form-group">
+				<label for="nome" class="col-sm-2  control-label">Nome</label>
+				<div class="col-sm-4">
+			    <input type="text" class="form-control" value="{aluno.nomAlu}" th:field="*{nomAlu}" placeholder="Nome"  />
+			    </div>
+			    </div>
+			    <div class="form-group">
+				<label for="dataNascimento" class="col-sm-2  control-label">Data Nascimento</label>
+				<div class="col-sm-4">
+			    <input type="date" class="form-control" value="{aluno.dtNascAlu}" th:field="*{dtNascAlu}" placeholder="Data de Nascimento"  /> 
+			    </div>
+			    </div>
+			    <div class="form-group">
+					<label for="sexo" class="col-sm-2 control-label">Sexo</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.sexoAlu}" th:field="*{sexoAlu}" placeholder="Sexo"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="localnascimetno" class="col-sm-2 control-label">Local de Nascimento</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.locNascAlu}" th:field="*{locNascAlu}" placeholder="Local de Nasciemento"  />
+			     </div>
+			    </div>
+			    <div class="form-group">
+					<label for="fili1" class="col-sm-2 control-label">Filiação 1</label>
+					<div class="col-sm-4">
+			    <input type="text" class="form-control" value="{aluno.filiAlu}" th:field="*{filiAlu}" placeholder="Filiação 1"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="fili2" class="col-sm-2 control-label">Filiação 2</label>
+					<div class="col-sm-4">
+			    <input type="text" class="form-control" value="{aluno.filiAlu2}" th:field="*{filiAlu2}" placeholder="Filiação 2"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="proffil1" class="col-sm-2 control-label">Profissão da Filiação 1</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.profFiliAlu}" th:field="*{profFiliAlu}" placeholder="Profissão da Filiação 1"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="proffil2" class="col-sm-2 control-label">Profissão da Filiação 2</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.profFiliAlu2}" th:field="*{profFiliAlu2}" placeholder="Profissão da Filiação 2"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="status" class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.statusAlu}" th:field="*{statusAlu}" placeholder="Status"  />
+			     </div>
+			    </div>
+			    <div class="form-group">
+					<label for="Foto" class="col-sm-2 control-label">Foto</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.pathFotoAlu}" th:field="*{pathFotoAlu}" placeholder="Foto"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+				<label for="cpf" class="col-sm-2  control-label">CPF</label>
+				<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.cpfAlu}" th:field="*{cpfAlu}" placeholder="CPF"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+				<label for="rg" class="col-sm-2  control-label">RG</label>
+				<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.rgAlu}" th:field="*{rgAlu}" placeholder="RG"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="foneresp" class="col-sm-2 control-label">Telefone 1</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.foneResp}" th:field="*{foneResp}" placeholder="fone Resp" />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="foneresp1" class="col-sm-2 control-label">Telefone 1</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.foneResp2}" th:field="*{foneResp2}" placeholder="fone Resp 2"  />
+			     </div>
+			    </div>
+			     <div class="form-group">
+					<label for="obs" class="col-sm-2 control-label">Observação</label>
+					<div class="col-sm-2">
+			    <input type="text" class="form-control" value="{aluno.obsAlu}" th:field="*{obsAlu}" placeholder="Informe o texto"  />
+			     </div>
+			    </div>
+			     <br/>
+			     <div class="form-group">
+				<label for="nome" class="col-sm-2  control-label">Endereço ID:</label>
+				<div class="col-sm-1">
 			    <input type="text" class="form-control" value="{aluno.idEnd}" th:field="*{idEnd}" placeholder="id end" readonly="readonly" />
-			     <input type="text" class="form-control" value="{aluno.idResp}" th:field="*{idResp}" placeholder="id resp" readonly="readonly" />
-			    
-	
-				<button type="submit" class="btn btn-primary">Alterar</button>
-			</div>
+			     </div>
+			    </div>
+			     <div class="form-group">
+				<label for="nome" class="col-sm-2  control-label">Responsável ID:</label>
+				<div class="col-sm-1">
+			    <input type="text" class="form-control" value="{aluno.idResp}" th:field="*{idResp}" placeholder="id resp" readonly="readonly" />
+			     </div>
+			    </div>
+				<button type="submit"  class="btn btn-primary">Alterar</button>
+			
 		</form>
 
         

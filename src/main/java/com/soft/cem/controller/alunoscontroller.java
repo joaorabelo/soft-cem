@@ -2,6 +2,7 @@ package com.soft.cem.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +31,7 @@ import com.soft.cem.util.GeneratePdfReport;
 public class alunoscontroller {
 
 private AlunosJPA aluno;
+
 private ArrayList<Alunos> users;	
 	
 @Autowired
@@ -48,18 +48,17 @@ public ModelAndView listar() {
 	modelAndView.addObject("aluno", new Alunos());
 	modelAndView.addObject("end", new Enderecos());
 	modelAndView.addObject("resp", new Responsaveis());
-	modelAndView.addObject("endresp", new Enderecos());
 	return modelAndView;
 }
 
 
 
 @RequestMapping(value = "/alunos", method = RequestMethod.POST)
-public String salvar(Alunos aluno, Enderecos end, Responsaveis resp, Enderecos endresp ) {
+public String salvar(Alunos aluno, Enderecos end, Responsaveis resp ) {;
 	aluno.setIdEnd(end);
 	aluno.setIdResp(resp);
-	aluno.getIdResp().setIdEnd(endresp);
 	this.aluno.save(aluno);
+	
 	
 	return "redirect:/alunos";
 }
@@ -77,11 +76,7 @@ public ModelAndView editar(@PathVariable Alunos aluno) {
 @RequestMapping("/alteraluno")
 public String editaralterar(@Validated Alunos aluno) {
 	
-	Alunos alunonovo = aluno;
-
-	this.aluno.delete(aluno.getMatAlu());
-
-	this.aluno.save(alunonovo);
+	this.aluno.save(aluno);
 
 	return "redirect:/alunos";
 }
@@ -104,8 +99,8 @@ public ArrayList<Alunos> fichaid(@PathVariable Integer id, Model model) {
 
 
 @RequestMapping(value = "/download/{matAlu}", method = RequestMethod.GET)
-public ResponseEntity<InputStreamResource> fichamatricula(@PathVariable("matAlu") Integer id) {
-	 Alunos alu= aluno.getOne(id);
+public ResponseEntity<InputStreamResource> fichamatricula(@PathVariable("matAlu") Integer id) throws MalformedURLException, IOException {
+	 Alunos alu = aluno.getOne(id);
 	 ByteArrayInputStream bis = GeneratePdfReport.fichamatricula(alu);
 	 
 	 HttpHeaders headers = new HttpHeaders();

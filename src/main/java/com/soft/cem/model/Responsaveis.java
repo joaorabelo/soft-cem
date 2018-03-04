@@ -182,11 +182,11 @@ public class Responsaveis implements Serializable {
         this.alunosCollection = alunosCollection;
     }
 
-    public Enderecos getIdEnd() {
+    public Enderecos getIdEndResp() {
         return idEnd;
     }
 
-    public void setIdEnd(Enderecos idEnd) {
+    public void setIdEndResp(Enderecos idEnd) {
         this.idEnd = idEnd;
     }
 
@@ -212,7 +212,7 @@ public class Responsaveis implements Serializable {
 
     @Override
     public String toString() {
-        return "com.rabelo.cemsoft.Responsaveis[ idResp=" + idResp + " ]";
+        return ""+idResp+"";
     }
     
 }
